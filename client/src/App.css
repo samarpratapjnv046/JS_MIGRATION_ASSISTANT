@@ -1,0 +1,188 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: "Inter", "Poppins", Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+/* App Container */
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Editor Layout */
+.editor-container {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Editor Card */
+.editor {
+  flex: 1;
+  position: relative;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+/* Animated Gradient Border */
+.editor::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(
+    120deg,
+    #38bdf8,
+    #6366f1,
+    #22c55e,
+    #38bdf8
+  );
+  background-size: 300% 300%;
+  animation: borderMove 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Shine Effect */
+.editor::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 35px rgba(99, 102, 241, 0.6);
+}
+
+button:disabled {
+  background: #475569;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Diff Viewer */
+.diff-viewer {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+/* App Title - Soft & Premium */
+.app-title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  /* Dark main text */
+  color: #cbd5e1;
+
+  /* Very subtle gradient */
+  background: linear-gradient(
+    90deg,
+    #94a3b8,
+    #c7d2fe,
+    #a7f3d0
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Soft shadow (not neon) */
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(99, 102, 241, 0.25);
+
+  animation: titleGlow 4s ease-in-out infinite alternate;
+}
+
+/* Very subtle glow animation */
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.45));
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  button {
+    width: 100%;
+    text-align: center;
+  }
+}

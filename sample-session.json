@@ -1,0 +1,6 @@
+{
+  "originalCode": "var name = 'John';\nvar age = 30;\nfunction greet() {\n  console.log('Hello ' + name);\n}\ngreet();",
+  "migratedCode": "const name = 'John';\nconst age = 30;\nconst greet = () => {\n  console.log(`Hello ${name}`);\n};\ngreet();",
+  "timestamp": "2025-12-30T16:30:00.000Z",
+  "id": "sample-migration-001"
+}
